@@ -15,6 +15,7 @@ import com.mahdikaseatashin.gpa.adapter.RecyclerItemClickListener
 import com.mahdikaseatashin.gpa.api.RetrofitService
 import com.mahdikaseatashin.gpa.databinding.ActivityMainBinding
 import com.mahdikaseatashin.gpa.repository.MainRepository
+import com.mahdikaseatashin.gpa.utils.Constants
 import com.mahdikaseatashin.gpa.viewmodel.MainViewModel
 import com.mahdikaseatashin.gpa.viewmodel.MyViewModelFactory
 import timber.log.Timber
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                         override fun onItemClick(view: View?, position: Int) {
                             // do whatever
                             val intent = Intent(this@MainActivity,DetailsActivity::class.java)
-                            intent.putExtra("selected_node", it[position])
+                            intent.putExtra(Constants.SELECTED_NODE_KEY, it[position])
                             startActivity(intent)
                         }
 
@@ -69,11 +70,4 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.getAllMovies()
     }
-
-//    override fun onResume() {
-//        super.onResume()
-//        viewModel.getAllMovies()
-//    }
-
-
 }

@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.mahdikaseatashin.gpa.R
 import com.mahdikaseatashin.gpa.databinding.ActivityDetailsBinding
 import com.mahdikaseatashin.gpa.models.NodeModel
+import com.mahdikaseatashin.gpa.utils.Constants
 
 
 class DetailsActivity : AppCompatActivity() {
@@ -41,6 +42,6 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun getIntentExtras() {
-        selectedNode = intent?.getParcelableExtra("selected_node")
+        selectedNode = intent?.getParcelableExtra(Constants.SELECTED_NODE_KEY)
     }
 }
