@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })
 
-        viewModel.loading.observe(this, {
+        viewModel.loading.observe(this, Observer {
             if (it) {
                 binding.pbLoadingMain.visibility = View.VISIBLE
             } else {
@@ -75,6 +75,11 @@ class MainActivity : AppCompatActivity() {
             Timber.plant(Timber.DebugTree())
         }
         Timber.e("timber test")
+
+        checkInternetConnection()
+    }
+
+    private fun checkInternetConnection() {
         networkMonitor.result = { isAvailable, type ->
             when (isAvailable) {
                 true -> {
