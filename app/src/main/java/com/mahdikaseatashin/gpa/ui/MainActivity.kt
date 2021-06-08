@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })
 
-        viewModel.loading.observe(this, Observer {
+        viewModel.loading.observe(this, {
             if (it) {
                 binding.pbLoadingMain.visibility = View.VISIBLE
             } else {
