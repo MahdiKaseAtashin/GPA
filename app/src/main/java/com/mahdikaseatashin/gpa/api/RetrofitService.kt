@@ -13,17 +13,17 @@ interface RetrofitService {
     @GET("repositories")
     suspend fun getAllNodes() : Response<List<NodeModel>>
 
-    companion object {
-        var retrofitService: RetrofitService? = null
-        fun getInstance() : RetrofitService {
-            if (retrofitService == null) {
-                val retrofit = Retrofit.Builder()
-                    .baseUrl(Constants.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
-                retrofitService = retrofit.create(RetrofitService::class.java)
-            }
-            return retrofitService!!
-        }
-    }
+//    companion object {
+//        var retrofitService: RetrofitService? = null
+//        fun getInstance() : RetrofitService {
+//            if (retrofitService == null) {
+//                val retrofit = Retrofit.Builder()
+//                    .baseUrl(Constants.BASE_URL)
+//                    .addConverterFactory(GsonConverterFactory.create())
+//                    .build()
+//                retrofitService = retrofit.create(RetrofitService::class.java)
+//            }
+//            return retrofitService!!
+//        }
+//    }
 }

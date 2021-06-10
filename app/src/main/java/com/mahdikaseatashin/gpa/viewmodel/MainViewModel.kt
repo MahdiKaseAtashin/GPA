@@ -7,12 +7,16 @@ import androidx.lifecycle.ViewModel
 import com.mahdikaseatashin.gpa.models.NodeModel
 import com.mahdikaseatashin.gpa.repository.MainRepository
 import kotlinx.coroutines.*
+import org.koin.dsl.module
 import timber.log.Timber
 import java.lang.Exception
 
+val viewModelModule = module {
+    factory { MainViewModel(get()) }
+}
+
 class MainViewModel constructor(private val repository: MainRepository)  : ViewModel() {
 
-    object AddressList: MutableLiveData<List<NodeModel>>()
     val errorMessage = MutableLiveData<String>()
     val nodeList = MutableLiveData<List<NodeModel>>()
     var job: Job? = null
@@ -21,7 +25,7 @@ class MainViewModel constructor(private val repository: MainRepository)  : ViewM
     }
     val loading = MutableLiveData<Boolean>()
 
-    fun getAllMovies(){
+    fun getAllNodes(){
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             try {
                 val response = repository.getAllNodes()
